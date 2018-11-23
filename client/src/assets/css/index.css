@@ -1,0 +1,4 @@
+@import '~vuetify/dist/vuetify.min.css';
+@tailwind preflight;
+@tailwind components;
+@tailwind utilities;
