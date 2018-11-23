@@ -1,0 +1,33 @@
+{
+    "plugins": ["prettier", "vue"],
+    "extends": [
+        "plugin:prettier/recommended",
+        "airbnb-base",
+        "eslint:recommended",
+        "plugin:vue/essential"
+    ],
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "rules": {
+        "prettier/prettier": ["error"],
+        "import/no-extraneous-dependencies": [
+            "error",
+            {
+                "devDependencies": true
+            }
+        ],
+        "indent": ["error", 4],
+        "no-console": "off",
+        "import/first": "off",
+        "array-bracket-newline": "off",
+        "vue/singleline-html-element-content-newline": "off",
+        "vue/multiline-html-element-content-newline": "off"
+    },
+    "parserOptions": {
+        "parser": "babel-eslint",
+        "ecmaVersion": 2017,
+        "sourceType": "module"
+    }
+}
