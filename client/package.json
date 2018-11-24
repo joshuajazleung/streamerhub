@@ -26,6 +26,7 @@
     "stylus-loader": "^3.0.1",
     "tailwindcss": "^0.7.2",
     "vue": "^2.5.17",
+    "vue-analytics": "^5.16.0",
     "vue-cli-plugin-vuetify": "^0.4.6",
     "vue-meta": "^1.5.5",
     "vue-router": "^3.0.2",
