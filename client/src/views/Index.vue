@@ -14,6 +14,7 @@
             So, share the link to other people as much as you can if you want fast streaming speed.
         </p>
         <fqa></fqa>
+        <Adsense data-ad-client="ca-pub-4679085340013866" data-ad-slot="6511749031"></Adsense>
         <div v-if="loading" class="mt-5">
             <p class="text-center text-2xl text-white">
                 File is being loaded from the server. Please wait.
@@ -84,6 +85,7 @@
                 >DOWNLOAD TORRENT</v-btn
             >
             <v-btn :href="shareURL" depressed large @click.prevent="onShare">SHARE</v-btn>
+            <Adsense data-ad-client="ca-pub-4679085340013866" data-ad-slot="6511749031"></Adsense>
             <v-list>
                 <v-list-tile v-for="file in files" :key="file.name">
                     <v-list-tile-content>
