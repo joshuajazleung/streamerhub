@@ -55,6 +55,7 @@
             </div>
         </div>
         <div id="videoList" class="videoList mt-5" ref="videoList"></div>
+        <Adsense data-ad-client="ca-pub-4679085340013866" data-ad-slot="6511749031"></Adsense>
         <div v-if="addedFiles" class="mt-5">
             <h2>Info</h2>
             <p class="mb-5">
@@ -139,6 +140,7 @@ import moment from 'moment';
 import path from 'path';
 import JSZip from 'jszip';
 import createTorrent from 'create-torrent';
+import parseTorrent from 'parse-torrent';
 
 import FQA from '../components/FQA.vue';
 
@@ -224,7 +226,10 @@ export default {
         if (location.hash) {
             this.loading = true;
             const infoHash = location.hash.substr(1);
-            this.download(infoHash);
+            const uri = parseTorrent.toMagnetURI({
+                infoHash
+            });
+            this.download(uri);
         }
 
         dragDrop('#main', {
