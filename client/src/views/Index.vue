@@ -54,9 +54,19 @@
                 </ul>
             </div>
         </div>
+        <div class="text-center mt-3">
+            <v-btn
+                v-if="typeOfDownload === 'magnet'"
+                target="_blank"
+                :href="magnetURI"
+                depressed
+                large
+                >DOWNLOAD FILE</v-btn
+            >
+        </div>
         <div id="videoList" class="videoList mt-5" ref="videoList"></div>
         <Adsense data-ad-client="ca-pub-4679085340013866" data-ad-slot="6511749031"></Adsense>
-        <div v-if="addedFiles" class="mt-5">
+        <div v-if="typeOfDownload !== 'magnet' && addedFiles" class="mt-5">
             <h2>Info</h2>
             <p class="mb-5">
                 File size: {{ torrentInfo.length | humanBytes }}, Progress:
@@ -166,6 +176,8 @@ export default {
     },
     data: () => ({
         loading: '',
+        typeOfDownload: '',
+        magnetURI: '',
         isBrowserSupported: WebTorrent.WEBRTC_SUPPORT,
         client: {},
         torrentId: '',
@@ -226,10 +238,18 @@ export default {
         if (location.hash) {
             this.loading = true;
             const infoHash = location.hash.substr(1);
-            const uri = parseTorrent.toMagnetURI({
+            this.magnetURI = parseTorrent.toMagnetURI({
                 infoHash
             });
-            this.download(uri);
+
+            this.download(infoHash);
+
+            setTimeout(() => {
+                if (this.loading) {
+                    this.typeOfDownload = 'magnet';
+                    this.loading = false;
+                }
+            }, 3000);
         }
 
         dragDrop('#main', {
