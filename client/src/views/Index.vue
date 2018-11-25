@@ -61,6 +61,7 @@
                 :href="magnetURI"
                 depressed
                 large
+                color="success"
                 >DOWNLOAD FILE</v-btn
             >
         </div>
