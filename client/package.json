@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "@babel/polyfill": "^7.0.0",
+    "@fullhuman/postcss-purgecss": "^1.1.0",
     "@vue/cli-plugin-babel": "^3.1.1",
     "@vue/cli-plugin-eslint": "^3.1.5",
     "@vue/cli-service": "^3.1.4",
@@ -23,12 +24,14 @@
     "moment": "^2.22.2",
     "parse-torrent": "^6.1.2",
     "prettier-bytes": "^1.0.4",
+    "purgecss": "^1.1.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
     "tailwindcss": "^0.7.2",
     "vue": "^2.5.17",
     "vue-analytics": "^5.16.0",
     "vue-cli-plugin-vuetify": "^0.4.6",
+    "vue-cli-plugin-webpack-bundle-analyzer": "^1.2.0",
     "vue-google-adsense": "^1.2.0",
     "vue-meta": "^1.5.5",
     "vue-router": "^3.0.2",
@@ -55,7 +58,13 @@
   "postcss": {
     "plugins": {
       "autoprefixer": {},
-      "tailwindcss": {}
+      "tailwindcss": {},
+      "@fullhuman/postcss-purgecss": {
+        "content": [
+          "./src/**/*.html",
+          "./src/**/*.vue"
+        ]
+      }
     }
   },
   "browserslist": [

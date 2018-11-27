@@ -54,20 +54,22 @@
                 </ul>
             </div>
         </div>
-        <div class="text-center mt-3">
-            <v-btn
-                v-if="typeOfDownload === 'magnet'"
-                target="_blank"
-                :href="magnetURI"
-                depressed
-                large
-                color="success"
-                >DOWNLOAD FILE</v-btn
-            >
-        </div>
+        <!--
+            <div class="text-center mt-3">
+                <v-btn
+                    v-if="typeOfDownload === 'magnet'"
+                    target="_blank"
+                    :href="magnetURI"
+                    depressed
+                    large
+                    color="success"
+                    >DOWNLOAD FILE</v-btn
+                >
+            </div>
+        -->
         <div id="videoList" class="videoList mt-5" ref="videoList"></div>
         <Adsense data-ad-client="ca-pub-4679085340013866" data-ad-slot="6511749031"></Adsense>
-        <div v-if="typeOfDownload !== 'magnet' && addedFiles" class="mt-5">
+        <div v-if="addedFiles" class="mt-5">
             <h2>Info</h2>
             <p class="mb-5">
                 File size: {{ torrentInfo.length | humanBytes }}, Progress:
@@ -177,7 +179,7 @@ export default {
     },
     data: () => ({
         loading: '',
-        typeOfDownload: '',
+        // typeOfDownload: '',
         magnetURI: '',
         isBrowserSupported: WebTorrent.WEBRTC_SUPPORT,
         client: {},
@@ -243,14 +245,18 @@ export default {
                 infoHash
             });
 
-            this.download(infoHash);
+            this.download(
+                `${
+                    this.magnetURI
+                }&tr=udp%3A%2F%2Fexplodie.org%3A6969&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Ftracker.empire-js.us%3A1337&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337&tr=wss%3A%2F%2Ftracker.btorrent.xyz&tr=wss%3A%2F%2Ftracker.fastcast.nz&tr=wss%3A%2F%2Ftracker.openwebtorrent.com`
+            );
 
-            setTimeout(() => {
-                if (this.loading) {
-                    this.typeOfDownload = 'magnet';
-                    this.loading = false;
-                }
-            }, 3000);
+            // setTimeout(() => {
+            //     if (this.loading) {
+            //         this.typeOfDownload = 'magnet';
+            //         this.loading = false;
+            //     }
+            // }, 3000);
         }
 
         dragDrop('#main', {

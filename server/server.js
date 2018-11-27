@@ -2,10 +2,12 @@ const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
 const debug = require('debug')('app:server');
+const compression = require('compression');
 
 const app = express();
 
 app.use(morgan('dev'));
+app.use(compression());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
