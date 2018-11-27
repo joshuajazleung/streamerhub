@@ -58,13 +58,7 @@
   "postcss": {
     "plugins": {
       "autoprefixer": {},
-      "tailwindcss": {},
-      "@fullhuman/postcss-purgecss": {
-        "content": [
-          "./src/**/*.html",
-          "./src/**/*.vue"
-        ]
-      }
+      "tailwindcss": {}
     }
   },
   "browserslist": [
